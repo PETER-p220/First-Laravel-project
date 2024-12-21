@@ -67,7 +67,7 @@ a:link{
 <h2 style="text-align:center;">Course Page</h2>
 
 
-<form action="{{route('coursePage')}}" method="POST">
+<form action="" method="POST">
     @csrf
   <div class="container">
     <label for="name"><b>course name</b></label>

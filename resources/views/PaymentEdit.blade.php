@@ -30,6 +30,7 @@ tr:hover {background-color:#f5f5f5;}
 </style>
 </head>
 <body>
+@include('success')
 
 <h2>Payment Application</h2>
 <button id="btn"><a href="{{route('payment')}}">Add new</a></button>
@@ -41,6 +42,7 @@ tr:hover {background-color:#f5f5f5;}
     <th>Amount</th>
     <th>Actions </th>
   </tr>
+
   @foreach ($paymentEdit as $payment)
       <tr>
         <td>{{$payment->id}}</td>

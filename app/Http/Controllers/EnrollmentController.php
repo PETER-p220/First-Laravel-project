@@ -31,6 +31,18 @@ class EnrollmentController extends Controller
         $enrollment->fee=request('fee');
         $enrollment->save();
     }
+    function update_enroll(Request $request,$id){
+        $enrollment = enrollment::find($id);
+        $enrollment->enrollment_no=request('enrollment_no');
+        $enrollment->batch=request('batch');
+        $enrollment->student=request('student');
+        $enrollment->join_date=request('join_date');
+        $enrollment->fee=request('fee');
+        $enrollment->update();
+
+        return redirect('enrollmentAction');
+
+    }
     public function edit_enrollment($id){
         $enrollment=enrollment::find($id);
         return View('enrollmentUpdate',compact('enrollment'));

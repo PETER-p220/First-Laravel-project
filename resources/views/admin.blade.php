@@ -59,11 +59,11 @@ span.psw {
 <body>
 
 <h2 style="text-align:center;">Admin Login Page</h2>
-<form action="{{ route('admin') }}" method="POST">
+<form action="{{ route('login') }}" method="POST">
   @csrf
         <!-- Display the user's profile or dashboard content here -->
         <!-- Google Login Button -->
-     
+
 
 
   <label for="email"><b>Email</b></label>
@@ -73,7 +73,7 @@ span.psw {
   <input type="password" placeholder="Enter Password" name="password" required>
 
   <button type="submit">Login</button><br><br>
- 
+
 </form>
 </body>
 </html>

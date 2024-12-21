@@ -67,7 +67,7 @@ a:link{
 
 <h2 style="text-align:center;">Batch Page</h2>
 
-<form action="{{route('batch')}}" method="POST">
+<form action="" method="POST">
     @csrf
   <div class="container">
     <label for="batch_name"><b>Batch name</b></label>

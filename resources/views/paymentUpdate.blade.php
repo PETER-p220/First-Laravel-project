@@ -72,7 +72,7 @@ a:link{
 
 <h2 style="text-align:center;">Update Payment Page</h2>
 
-<form action="{{route('payment')}}" method="POST">
+<form action="" method="POST">
     @csrf
   <div class="container">
     <label for="name"><b>Enrollment number</b></label>

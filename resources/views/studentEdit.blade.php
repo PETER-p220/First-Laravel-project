@@ -28,6 +28,7 @@ button{
 </style>
 </head>
 <body>
+@include('success')
 
 <h2>Student Application</h2>
 <button id="btn"><a href="{{route('create')}}"onclick="student()">Add new</a></button>

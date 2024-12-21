@@ -74,10 +74,8 @@ span.psw {
 
 <h2 style="text-align:center;">Student Page</h2>
 
-<form action="{{route('create')}}" method="POST">
-
+<form action="" method="POST">
     @csrf
-
   <div class="container">
     <label for="name"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" value="{{$student->name}}" name="name" required>

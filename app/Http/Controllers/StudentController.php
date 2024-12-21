@@ -74,23 +74,23 @@ class StudentController extends Controller
     {
         //
         $student = student::find($id);
-        return view('editStd')->with('student', $student);
+        return View('editStd')->with('student', $student);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update_std(Request $request, string $id)
+    public function update_std(Request $request,$id)
     {
         //
         $student = student::find($id);
-        $student->email=request('email');
-        $student->password=request('password');
+        $student->name= request('name');
+        $student->email= request('email');
+        //Making hashed password for security purposes
+        $student->password= Hash::make('password');
         $student->save();
-        #$student = $request->all();
-        #$studentEdit->update($student);
-        return View('editStd',compact('student'));
-        #return redirect('create')->with('flash_message', 'student Updated!');
+
+        return redirect('studentEdit')->with('flash_message', 'student Updated!');
 
     }
 

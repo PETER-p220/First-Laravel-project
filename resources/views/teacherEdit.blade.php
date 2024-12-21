@@ -40,7 +40,6 @@ a{
 </style>
 </head>
 <body>
-
 <h2>Teacher Application</h2>
 <div id="search">
 

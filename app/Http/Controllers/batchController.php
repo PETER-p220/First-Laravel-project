@@ -38,6 +38,7 @@ class batchController extends Controller
         $batch->course_name = request('course_name');
         $batch->start_date = request('start_date');
         $batch->save();
+
     }
     public function update_batch(Request $request, string $id)
     {
@@ -49,7 +50,7 @@ class batchController extends Controller
         $batch->save();
         #$student = $request->all();
         #$studentEdit->update($student);
-        return redirect('batch')->with('flash_message', 'batch Updated!');
+        return redirect('batchEdit')->with('flash_message', 'batch Updated!');
 
     }
     public function delete_batch($id){

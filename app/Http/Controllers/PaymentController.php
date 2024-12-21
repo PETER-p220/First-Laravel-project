@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Models\payment;
 use Carbon\Factory;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +21,8 @@ class PaymentController extends Controller
         return View('PaymentEdit',compact('paymentEdit'));
     }
     public function index2():View{
-        return View('paymentUpdate');
+        $payment=payment::all();
+        return View('paymentUpdate',compact('payment'));
     }
     function store(Request $request){
         $payment = new payment;
@@ -27,20 +30,20 @@ class PaymentController extends Controller
         $payment->paid_date=request('paid_date');
         $payment->amount=request('amount');
         $payment->save();
-
+        return redirect('PaymentEdit')->with('success','New Payment Added');
     }
     public function edit_payment($id)
     {
         $payment=payment::find($id);
         return View('paymentUpdate',compact('payment'));
     }
-    public function update_payment(Request $request,payment $id){
-        $paymentEdit= payment::find($id);
-        $paymentEdit->enrollment_no=request('enrollment_no');
-        $paymentEdit->paid_date=request('paid_date');
-        $paymentEdit->amount=request('amount');
-        $paymentEdit->update();
-        return View('paymentEdit',compact('paymentEdit'));
+    public function update_payment(Request $request,$id){
+        $payment= payment::find($id);
+        $payment->enrollment_no=request('enrollment_no');
+        $payment->paid_date=request('paid_date');
+        $payment->amount=request('amount');
+        $payment->update();
+        return redirect('PaymentEdit')->with('success','Payment Added');
     }
 
 
@@ -56,14 +59,23 @@ class PaymentController extends Controller
         $payment=payment::all();
         return View('view_payment',compact('payment'));
     }
-    public function print(payment $id){
-        $paymentEdit=payment::find($id);
-        $data=[
-            'enrollment_no',
-            'start_date',
-            'amount',
-        ];
-        return $pdf->stream('print');
+    public function createPaymentIntent(Request $request)
+    {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    }
+        try {
+            $paymentEdit = PaymentIntent::create([
+                'amount' => $request->amount * 100, // Amount in cents
+                'currency' => 'usd',
+                'payment_method_types' => ['card'],
+            ]);
+
+            return response()->json([
+                'clientSecret' => $paymentEdit->client_secret
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+
+}
 }

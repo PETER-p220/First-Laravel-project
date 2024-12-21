@@ -13,7 +13,7 @@ class teacherController extends Controller
     /**
      * Display a listing of the resource.
      */
-   
+
     public function index(): View
     {
         $teacher=teacher::all(); // This retrieves all records from the '
@@ -84,7 +84,7 @@ class teacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update_teacher(Request $request, string $id)
+    public function update_teacher(Request $request,$id)
     {
         //
         $teacher = teacher::find($id);
@@ -92,10 +92,9 @@ class teacherController extends Controller
         $teacher->email= request('email');
         //Making hashed password for security purposes
         $teacher->password= Hash::make('password');
-        $teacher->image= request('image');
 
         $teacher->save();
-        return redirect('teacher')->with('teacher', 'teacher Updated!');
+        return redirect('teacherEdit')->with('teacher', 'teacher Updated!');
 
     }
 

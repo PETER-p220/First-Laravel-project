@@ -7,6 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+<style>
+    a:link{
+        color:black;
+        text-decoration: none;
+    }
+</style>
 <body>
    <!--
   This example requires updating your template:
@@ -26,11 +32,10 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
 
-            <a href="{{ route('login.google') }}" style="background-color: #4285F4; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-            Login with Google
-        </a>
+            <!--<a href="{{ route('google.login') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Login with Google</a>
+
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="{{route('admin')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
+              <a href="{{route('admin')}}" class="rounded-md bg-gray-90 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
               <a href="{{route('teacherEdit')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Teacher</a>
               <a href="{{route('studentEdit')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Student</a>
               <a href="{{route('batchEdit')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Batch</a>

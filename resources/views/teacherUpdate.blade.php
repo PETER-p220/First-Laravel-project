@@ -75,7 +75,7 @@ span.psw {
 
 <h2 style="text-align:center;">Teacher Login Page</h2>
 
-<form action="{{route('teacher')}}" method="post">
+<form action="" method="post">
     @csrf
   <div class="container">
     <label for="name"><b>Username</b></label>
